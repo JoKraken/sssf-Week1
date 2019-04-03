@@ -28,6 +28,10 @@ const Schema = mongoose.Schema;
 const express = require('express');
 const app = express();
 const http = express();
+
+const helmet = require('helmet');
+app.use(helmet());
+
 //jelastic
 app.enable('trust proxy');
 
@@ -64,7 +68,7 @@ mongoose.connect('mongodb://'+ process.env.DB_USER +':'+ process.env.DB_PWD + '@
     http.listen(process.env.APP_PORT);
     https.createServer(options, app).listen(3001);*/
 
-    app.listen(3000);
+    app.listen(process.env.APP_PORT);
 
 }, err => {
     console.log('Connection to db failed: ' + err);
