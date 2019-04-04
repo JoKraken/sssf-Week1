@@ -2,9 +2,15 @@ const schema = require('../models/data');
 const sharp = require('sharp');
 
 exports.getAllData = (uid) => {
-    return schema.Data.find({user_id: uid}).then(data => {
-        return data;
-    });
+    if(uid == "undefined"){
+        return schema.Data.find().then(data => {
+            return data;
+        });
+    }else {
+        return schema.Data.find({user_id: uid}).then(data => {
+            return data;
+        });
+    }
 };
 
 exports.deletDataAll = (id) => {
