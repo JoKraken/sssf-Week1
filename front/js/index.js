@@ -2,6 +2,8 @@ app.controller('showCtrl', function($scope) {
     $scope.cato = [];
     $scope.all = [];
     $scope.data = [];
+    $scope.logedIn = (localStorage.login == "true") ? true : false;
+    console.log($scope.logedIn);
 
 
     const Http = new XMLHttpRequest();
@@ -93,4 +95,3 @@ app.controller('modalCtrl', function($scope) {
         document.querySelector('#'+id).style.display = "none";
     };
 });
-

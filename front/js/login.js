@@ -21,11 +21,13 @@ app.controller('loginCtrl', function($scope) {
             if(Http.status == 200){
                 console.log("login");
                 localStorage.setItem("login", true);
+                localStorage.setItem("temp", Http.response);
                 document.querySelector('#logedIn').style.display = "block";
                 document.querySelector('.errorLogin').style.display = "none";
                 document.querySelector('#loginForm').style.display = "none";
             } else{
                 localStorage.setItem("login", false);
+                localStorage.setItem("temp", undefined);
                 console.log("not login");
                 document.querySelector('#logedIn').style.display = "none";
                 document.querySelector('.errorLogin').innerHTML = (Http.status == 404) ? "The password is wrong": "The username is wrong";

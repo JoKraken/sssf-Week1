@@ -102,8 +102,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 app.post('/login', (req, res) => {
+    console.log("Login");
     userCon.checkUser(req.body).then((result) => {
-        res.sendStatus(result);
+        if(result == 404 || result == 401){
+            res.sendStatus(result);
+        }else res.send(result);
     });
 });
 
