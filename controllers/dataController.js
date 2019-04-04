@@ -1,8 +1,8 @@
 const schema = require('../models/data');
 const sharp = require('sharp');
 
-exports.getAllData = () => {
-    return schema.Data.find().then(data => {
+exports.getAllData = (uid) => {
+    return schema.Data.find({user_id: uid}).then(data => {
         return data;
     });
 };

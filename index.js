@@ -76,8 +76,9 @@ mongoose.connect('mongodb://'+ process.env.DB_USER +':'+ process.env.DB_PWD + '@
 });
 
 //send all the Data back
-app.get('/all', (req, res) => {
-    dataCon.getAllData().then((result) => {
+app.get('/all/:uid', (req, res) => {
+    console.log(req.params.uid);
+    dataCon.getAllData(req.params.id).then((result) => {
         res.send(result);
     });
 });
